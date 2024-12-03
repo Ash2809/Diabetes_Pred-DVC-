@@ -1,5 +1,5 @@
 preprocessor:
-  input: data/raw/diabetes.csv
+  input: C:\MLOPS\Diabetes_Pred-DVC-\data\raw\diabetes.csv
   output: data/processed/data.csv
 
 trainer:
