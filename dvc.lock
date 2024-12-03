@@ -1,0 +1,60 @@
+schema: '2.0'
+stages:
+  preprocessor:
+    cmd: python src/preprocessor.py
+    deps:
+    - path: data/raw/diabetes.csv
+      hash: md5
+      md5: f2906818eda8fcfc8f8416557ab1e6df
+      size: 23873
+    - path: src/preprocessor.py
+      hash: md5
+      md5: 3fcf690ba727de2752eed7fab138be25
+      size: 479
+    params:
+      params.yaml:
+        preprocessor.input: C:\MLOPS\Diabetes_Pred-DVC-\data\raw\diabetes.csv
+        preprocessor.output: C:\MLOPS\Diabetes_Pred-DVC-\data\preprocessed\data.csv
+    outs:
+    - path: data/preprocessed/data.csv
+      hash: md5
+      md5: bea5b9be0aee81bfecbe7100ed8b90da
+      size: 23961
+  trainer:
+    cmd: python src/trainer.py
+    deps:
+    - path: data/raw/diabetes.csv
+      hash: md5
+      md5: f2906818eda8fcfc8f8416557ab1e6df
+      size: 23873
+    - path: src/trainer.py
+      hash: md5
+      md5: 8a6da208c7d66721057bdabfa1aeb63e
+      size: 3052
+    params:
+      params.yaml:
+        trainer.data: data/raw/diabetes.csv
+        trainer.max_depth: 5
+        trainer.model: models/model.pkl
+        trainer.n_estimators: 100
+        trainer.random_state: 42
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: 203abf83e295c43374c5db482c2cb6ea
+      size: 2708412
+  evaluater:
+    cmd: python src/evaluater.py
+    deps:
+    - path: data/raw/diabetes.csv
+      hash: md5
+      md5: f2906818eda8fcfc8f8416557ab1e6df
+      size: 23873
+    - path: models/model.pkl
+      hash: md5
+      md5: 203abf83e295c43374c5db482c2cb6ea
+      size: 2708412
+    - path: src/evaluater.py
+      hash: md5
+      md5: 1c88454f499e220eb09b5ebf522d4fff
+      size: 962

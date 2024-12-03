@@ -67,7 +67,7 @@ def train(data_path, model_path):
         else:
             mlflow.sklearn.log_model(best_model, "model",signature=signature)
 
-        os.makedirs(os.path.dirname(model_path))
+        os.makedirs(os.path.dirname(model_path),exist_ok=True)
 
         filename=model_path
         pickle.dump(best_model,open(filename,'wb'))
