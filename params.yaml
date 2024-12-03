@@ -1,6 +1,6 @@
 preprocessor:
   input: C:\MLOPS\Diabetes_Pred-DVC-\data\raw\diabetes.csv
-  output: data/processed/data.csv
+  output: C:\MLOPS\Diabetes_Pred-DVC-\data\preprocessed\data.csv
 
 trainer:
   random_state: 42
