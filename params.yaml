@@ -1,0 +1,10 @@
+preprocessor:
+  input: data/raw/diabetes.csv
+  output: data/processed/data.csv
+
+trainer:
+  random_state: 42
+  max_depth: 5
+  n_estimators: 100
+  data: data/processed/data.csv
+  model: models/model.pkl
